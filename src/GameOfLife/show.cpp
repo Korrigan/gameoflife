@@ -10,6 +10,7 @@
 
 #include	<vector>
 #include	<iostream>
+#include	<cstdlib>
 
 #include	"Cell.hpp"
 #include	"GameOfLife.hpp"
@@ -18,6 +19,7 @@ void GameOfLife::show(void)
 {
   e_state	state;
 
+  system("clear");
   for (int k = 0; k < this->_size; k++)
     std::cout << "==";
   std::cout << std::endl;
@@ -31,4 +33,5 @@ void GameOfLife::show(void)
 	else
 	  std::cout << " ";
       }
+  usleep(300000);
 }

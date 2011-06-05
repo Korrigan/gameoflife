@@ -13,7 +13,7 @@
 
 # include	"Cell.hpp"
 
-# define	DEFAULT_BOARD_SIZE	5
+# define	DEFAULT_BOARD_SIZE	16
 
 class GameOfLife
 {
