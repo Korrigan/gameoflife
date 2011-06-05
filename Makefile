@@ -13,7 +13,8 @@ SRCF=		main.cpp
 GOLF=		GameOfLife.cpp \
 		prepare.cpp \
 		process.cpp \
-		count_neighbours.cpp
+		count_neighbours.cpp \
+		show.cpp
 CELLF=		Cell.cpp \
 		live.cpp \
 		die.cpp \

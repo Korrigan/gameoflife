@@ -16,15 +16,16 @@
 /*
  * < 2 : death alone
  * > 3 : death by surpopulation
+ * = 3 : new cell
  */
 int GameOfLife::game_rulez(Cell &c, int nb)
 {
   e_state	state;
 
   state = c.get_state();
-  if ((nb < 2 || nb > 3) && state == LIVING)
+  if ((nb < 2 || nb > 3) && (state == LIVING))
     c.die();
-  else if ((nb == 3) && state == DIED)
+  else if ((nb == 3) && (state == DIED))
     c.live();
   else
     return (0);
@@ -37,6 +38,6 @@ int GameOfLife::prepare(void)
 
   for (int i = 0; i < this->_size; i++)
     for (int j = 0; j < this->_size; j++)
-      changes += game_rulez(this->_board[i][j], this->count_neighbours(i, j));
+      changes += game_rulez(this->_board[i][j], this->count_neighbours(j, i));
   return (changes);
 }

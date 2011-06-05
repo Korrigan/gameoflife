@@ -18,14 +18,11 @@ int		main(int ac, char **av)
 {
   GameOfLife	engine;
 
-  if (ac == 2)
-    engine = GameOfLife(atoi(av[1]));
-  else
-    engine = GameOfLife();
   while (engine.prepare())
     {
-      engine.process();
       engine.show();
+      engine.process();
     }
+  engine.show();
   return (0);
 }

@@ -13,7 +13,7 @@
 
 # include	"Cell.hpp"
 
-# define	DEFAULT_BOARD_SIZE	42
+# define	DEFAULT_BOARD_SIZE	5
 
 class GameOfLife
 {
@@ -31,7 +31,7 @@ public:
 
   int prepare(void);
   void process(void);
-  //  int show(void);
+  void show(void);
 };
 
 #endif	//	!GAMEOFLIFE_H_

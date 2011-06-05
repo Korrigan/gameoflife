@@ -8,6 +8,7 @@
 // Last update Sun Jun  5 13:07:06 2011 Matthieu Rosinski
 //
 
+#include	<iostream>
 #include	<vector>
 
 #include	"Cell.hpp"
@@ -15,20 +16,28 @@
 
 void GameOfLife::init_board(void)
 {
-  for (int i = 0; i < _size; i++)
-    for (int j = 0; j < _size; j++)
-      _board[i].push_back(DIED);
+  this->_board.resize(this->_size);
+  for (int i = 0; i < this->_size; i++)
+    {
+      for (int j = 0; j < this->_size; j++)
+	{
+	  char c;
+	  std::cin >> c;
+	  std::cin.ignore();
+	  this->_board[i].push_back(c == 'x' ? LIVING : DIED);
+	}
+    }
 }
 
-GameOfLife::GameOfLife()
+GameOfLife::GameOfLife(void)
 {
-  this->_size = 0;
-  init_board();
+  this->_size = DEFAULT_BOARD_SIZE;
+  this->init_board();
 }
 
 GameOfLife::GameOfLife(int size)
 {
-  if (size > 0)
+  if (size < 0)
     size = DEFAULT_BOARD_SIZE;
   this->_size = size;
   this->init_board();

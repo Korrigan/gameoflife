@@ -28,9 +28,16 @@ const int	dirs[][2] =
 int GameOfLife::count_neighbours(int x, int y)
 {
   int	       nb = 0;
+  e_state      st;
 
   for (size_t i = 0; i < sizeof(dirs) / sizeof(dirs[0]); i++)
-    if (this->_board[y][x].get_state() == LIVING)
-      nb++;
+    {
+      if (y + dirs[i][0] == this->_size || y + dirs[i][0] < 0
+	  || x + dirs[i][1] == this->_size || x + dirs[i][1] < 0)
+	continue;
+      st = this->_board[y + dirs[i][0]][x + dirs[i][1]].get_state();
+      if (st == LIVING || st == WILL_DIE)
+	nb++;
+    }
   return (nb);
 }
