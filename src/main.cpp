@@ -18,11 +18,5 @@ int		main(int ac, char **av)
 {
   GameOfLife	engine;
 
-  while (engine.prepare())
-    {
-      engine.show();
-      engine.process();
-    }
-  engine.show();
-  return (0);
+  engine();
 }

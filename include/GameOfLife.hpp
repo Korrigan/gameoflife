@@ -32,6 +32,7 @@ public:
   int prepare(void);
   void process(void);
   void show(void);
+  int operator()(void);
 };
 
 #endif	//	!GAMEOFLIFE_H_

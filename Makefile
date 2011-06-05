@@ -11,6 +11,7 @@
 NAME=		game_of_life
 SRCF=		main.cpp
 GOLF=		GameOfLife.cpp \
+		run.cpp \
 		prepare.cpp \
 		process.cpp \
 		count_neighbours.cpp \
