@@ -19,6 +19,5 @@ int GameOfLife::operator()(void)
       this->show();
       this->process();
     }
-  this->show();
   return (0);
 }

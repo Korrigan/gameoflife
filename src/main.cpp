@@ -16,7 +16,14 @@
 
 int		main(int ac, char **av)
 {
-  GameOfLife	engine;
-
-  engine();
+  if (ac < 2)
+    {
+      std::cerr << "Usage: "
+		<< av[0]
+		<< " <map_file>..."
+		<< std::endl;
+      return (EXIT_FAILURE);
+    }
+  GameOfLife	engine(av[1]);
+  return (engine());
 }

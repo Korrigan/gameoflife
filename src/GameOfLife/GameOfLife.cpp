@@ -9,12 +9,13 @@
 //
 
 #include	<iostream>
+#include	<fstream>
 #include	<vector>
 
 #include	"Cell.hpp"
 #include	"GameOfLife.hpp"
 
-void GameOfLife::init_board(void)
+void GameOfLife::init_board(std::ifstream &in)
 {
   this->_board.resize(this->_size);
   for (int i = 0; i < this->_size; i++)
@@ -22,28 +23,17 @@ void GameOfLife::init_board(void)
       for (int j = 0; j < this->_size; j++)
 	{
 	  char c;
-	  std::cin >> c;
-	  std::cin.ignore();
-	  this->_board[i].push_back(c == 'x' ? LIVING : DIED);
+	  in.get(c);
+	  in.ignore();
+	  this->_board[i].push_back(c == LIVE_CHAR ?
+				    LIVING : DIED);
 	}
     }
 }
 
-GameOfLife::GameOfLife(void)
+GameOfLife::GameOfLife(char *map, int size)
 {
-  this->_size = DEFAULT_BOARD_SIZE;
-  this->init_board();
-}
-
-GameOfLife::GameOfLife(int size)
-{
-  if (size < 0)
-    size = DEFAULT_BOARD_SIZE;
+  std::ifstream in(map);
   this->_size = size;
-  this->init_board();
-}
-
-GameOfLife::~GameOfLife()
-{
-  this->_board.clear();
+  this->init_board(in);
 }
